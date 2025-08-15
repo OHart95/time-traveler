@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 // Import the Express web framework (handles HTTP server + routes)
 import express from "express";
 
@@ -57,10 +59,10 @@ app.use(express.static(path.join(__dirname, "public")));
 app.post("/future", async (req, res) => {
   try {
     // Extract year sent by the frontend
-    const { year } = req.body;
+    const { year, type } = req.body;
 
     // Build a dynamic prompt for the GPT model
-    const prompt = `The year is ${year}. Describe what Earth might be like in terms of society, technology, and environment. Keep it under 200 words.`;
+    const prompt = `The year is ${year}. Describe what Earth might be like in terms of society, technology, and environment. Give the response in a ${type} style and keep it under 150 words.`;
 
     // Call OpenAI’s Chat Completions API
     const response = await client.chat.completions.create({
