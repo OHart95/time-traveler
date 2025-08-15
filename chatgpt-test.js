@@ -1,3 +1,4 @@
+
 import OpenAI from "openai";
 import 'dotenv/config';
 
@@ -7,7 +8,7 @@ const openai = new OpenAI({
 });
 
 // Simple function to ask ChatGPT about the future
-async function getFutureDescription(yearsInFuture, style) {
+export async function getFutureDescription(yearsInFuture, style) {
   const styles = {
     realistic: "Provide a realistic, science-based prediction",
     scifi: "Provide an imaginative science fiction scenario",

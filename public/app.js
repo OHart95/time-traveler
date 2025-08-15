@@ -1,3 +1,6 @@
+// app.js
+import { getFutureDescription } from "../chatgpt-test.js";
+
 // compute Lorentz factor gamma for beta = v/c (beta in range (0,1))
 function computeGamma(beta) {
     if (beta <= 0) return 1;
@@ -44,7 +47,7 @@ function computeAndLog(travelerYears, speedPercent, opts = {}) {
   }
 }
 
-function runConsoleApp() {
+async function runConsoleApp() {
     console.log("Time-dilation console app - enter values or Cancel to quit.");
 
     while(true) {
@@ -69,6 +72,10 @@ function runConsoleApp() {
         }
 
         const result = computeAndLog(t, s);
+
+        if (result) {
+            await getFutureDescription(Math.round(result.earthYears), "realistic");
+        }
         
         console.log("[Placeholder] ChatGPT future description would go here when integrated.");
         console.log("-------");
