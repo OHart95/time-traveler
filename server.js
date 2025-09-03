@@ -62,7 +62,7 @@ app.post("/future", async (req, res) => {
     const { year, type } = req.body;
 
     // Build a dynamic prompt for the GPT model
-    const prompt = `The year is ${year}. Describe what Earth might be like in terms of society, technology, and environment. Give the response in a ${type} style and keep it under 150 words.`;
+    const prompt = `The year is ${year}. Describe what Earth might be like in terms of society, technology, and environment. Give the response in a ${type} style and keep it strictly under 150 words.`;
 
     // Call OpenAI’s Chat Completions API
     const response = await client.chat.completions.create({

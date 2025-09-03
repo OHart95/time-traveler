@@ -9,33 +9,50 @@
     <title>Time Traveler</title>
 </head>
 <body>
-    <header>
-        <h1>Time Traveler</h1>
-    </header>
 
-    <main>
-        <form id="time-travel-form">
+    <!-- Loading screen overlay -->
+    <div id="loading-screen">
+        <video id="loading-video" autoplay muted loop>
+            <source src="assets/videos/lightspeed.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
 
-            <label for="travel-time">Travel time:</label>
-            <input type="number" id="travel-time" name="travel-time" required>
 
-            <label for ="speed">Speed (as a percent of the speed of light i.e. 99.95) </label>
-            <input type="number" id="speed" name="speed" min="0" max="99.99" step="0.01" required>
-
-            <label for="response-type">Response Type:</label>
-            <input type="text" id="response-type" name="response-type" placeholder="funny" required>
-
-            <button type="submit">Launch</button>
+    <div id="main-content">
+        <form id="myForm">
+        <!-- your form inputs -->
         </form>
-    </main>
 
-    <!-- decorative planets -->
-    <div class="planet mars"></div>
-    <div class="planet earth"></div>
-    <div class="planet saturn"></div>
-    <div class="planet astronaut"></div>
-    <div class="planet nebula"></div>
-    <div class="planet ufo"></div>
+        <header>
+            <h1>Time Traveler</h1>
+        </header>
+
+        <main>
+            <form id="time-travel-form">
+
+                <label for="travel-time">Travel time:</label>
+                <input type="number" id="travel-time" name="travel-time" required>
+
+                <label for ="speed">Speed (as a percent of the speed of light i.e. 99.95) </label>
+                <input type="number" id="speed" name="speed" min="0" max="99.99" step="0.01" required>
+
+                <label for="response-type">Response Type:</label>
+                <input type="text" id="response-type" name="response-type" placeholder="funny" required>
+
+                <button class="sci-fi-button" type="submit">Launch</button>
+            </form>
+        </main>
+
+        <!-- decorative planets -->
+        <div class="planet mars"></div>
+        <div class="planet earth"></div>
+        <div class="planet saturn"></div>
+        <div class="planet astronaut"></div>
+        <div class="planet nebula"></div>
+        <div class="planet ufo"></div>
+
+    </div>
 
 </body>
 </html>

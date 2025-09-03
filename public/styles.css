@@ -22,7 +22,8 @@ body {
     line-height: 1.6;
     color: #F5F5F5;
     background-image: url(assets/images/background-image.png);
-
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: center; /* horizontal */
@@ -31,6 +32,13 @@ body {
     margin: 0;
     gap: 20px; /* space between elements */
 }
+
+html {
+    height: 100%;
+    overflow: hidden; /* prevent scrolling */
+}
+
+/* ------------------------------------------------------------------------ FORM STYLING ------------------------------------------------------------------------ */
 
 form {
     display: flex;
@@ -53,6 +61,70 @@ input {
     background-color: rgba(255,255,255,0.2);
 }
 
+/* ------------------------------------------------------------------------ BUTTON STYLING ------------------------------------------------------------------------ */
+
+/* Sci-Fi Neon Launch Button */
+.sci-fi-button {
+  position: relative;
+  display: inline-block;
+  padding: 10px 40px;
+  margin-top: 20px;
+  font-family: sansation-regular, Ariel, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #0a0a0a;
+  border: 2px solid #00f0ff;
+  opacity: 0.75;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow:
+    0 0 5px #00f0ff,
+    0 0 10px #00f0ff,
+    0 0 20px #00f0ff,
+    0 0 40px #00f0ff inset;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.sci-fi-button::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.2), transparent 60%);
+  opacity: 0;
+  transform: rotate(45deg);
+  transition: all 0.5s ease-in-out;
+}
+
+.sci-fi-button:hover {
+  color: #fff;
+  box-shadow:
+    0 0 10px #00f0ff,
+    0 0 20px #00f0ff,
+    0 0 40px #00f0ff,
+    0 0 80px #00f0ff inset;
+}
+
+.sci-fi-button:hover::before {
+  opacity: 1;
+  top: -25%;
+  left: -25%;
+}
+
+.sci-fi-button:active {
+  transform: scale(0.95);
+  box-shadow:
+    0 0 5px #00f0ff,
+    0 0 10px #00f0ff inset;
+}
+
+
+
 /* ------------------------------------------------------------------------ FLOATING ASSETS ------------------------------------------------------------------------ */
 
 /* generic planet style */
@@ -65,23 +137,26 @@ input {
   z-index: 0; /* keep behind main UI */
 }
 
-/* individual planets with your images */
+/* individual planets with images */
 .mars {
   width: 7vw; height: 7vw;
   top: 10%; left: 100px;
   background-image: url('assets/images/Mars.png');
+  z-index: -1; /* keep behind main UI */
 }
 
 .earth {
     width: 8vw; height: 8vw;
-    Bottom: 10%; right: 100px;
+    bottom: 10%; right: 100px;
     background-image: url('assets/images/BluePlanet.png');
+    z-index: -1; /* keep behind main UI */
 }
 
 .saturn {
     width: 18vw; height: 18vw;
     top: 10%; right: 15%;
     background-image: url('assets/images/saturn.png');
+    z-index: -1; /* keep behind main UI */
 }
 
 .ufo {
@@ -111,4 +186,102 @@ input {
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
+}
+
+
+/* ------------------------------------------------------------------------ LOADING SCREEN CONTROLS ------------------------------------------------------------------------ */
+
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  display: flex; /* hidden initially */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+  opacity: 0;
+  pointer-events: none; /* disable interactions when hidden */
+  transition: opacity 0.5s ease;
+}
+
+#loading-screen.active {
+  opacity: 1;
+  pointer-events: all; /* allow interaction if needed */
+}
+
+#loading-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* cover the whole screen */
+}
+
+
+/* ------------------------------------------------------------------------ CAPTAINS LOG ------------------------------------------------------------------------ */
+
+.hidden { display: none !important; }
+
+#captains-log {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* background: radial-gradient(circle at top, #0a0a0a, #000010); */
+  background-image: url(assets/images/background-image.png);
+  color: #00f0ff;
+  font-family: 'Courier New', monospace;
+  text-align: center;
+  padding: 20px;
+  animation: fadeIn 1s ease forwards;
+}
+
+#captains-log h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 5px #00f0ff, 0 0 10px #00f0ff;
+}
+
+#captains-log p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  text-shadow: 0 0 2px #00f0ff;
+}
+
+#captains-log button {
+  margin-top: 30px;
+  padding: 10px 30px;
+  font-size: 1.2rem;
+  color: #00f0ff;
+  background: transparent;
+  border: 2px solid #00f0ff;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 0 5px #00f0ff, 0 0 10px #00f0ff inset;
+  transition: all 0.3s ease-in-out;
+}
+
+#captains-log button:hover {
+  background: #00f0ff10;
+  box-shadow: 0 0 15px #00f0ff;
+}
+
+#captains-log ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+#captains-log li {
+  margin: 0.5rem 0;
+  text-shadow: 0 0 2px #00f0ff;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
