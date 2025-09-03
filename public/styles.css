@@ -13,7 +13,7 @@
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 4rem;
     margin-bottom: 20px;
 }
 
@@ -36,6 +36,14 @@ body {
 html {
     height: 100%;
     overflow: hidden; /* prevent scrolling */
+}
+
+#main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* horizontal */
+    align-items: center;     /* vertical */
+    gap: 20px; /* space between elements */
 }
 
 /* ------------------------------------------------------------------------ FORM STYLING ------------------------------------------------------------------------ */
